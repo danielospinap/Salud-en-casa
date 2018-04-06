@@ -7,7 +7,7 @@ module.exports = function(app) {
     app.route('/register').post(login.newUser);
 
     app.route('/update').put(login.update);
-    
-    app.route('/find').put(login.find);
+
+    app.route('/find').post(login.find);
 
 };
