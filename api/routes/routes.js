@@ -2,7 +2,7 @@ module.exports = function(app) {
     var empleadoCtrl = require('../controllers/empleado.js');
 
     // todoList Routes
-    app.route('/empleado').post(empleadoCtrl.crearEmpleado);
+    app.route('/empleado/register').post(empleadoCtrl.crearEmpleado);
 /*
 
     app.route('/tasks/:taskId')

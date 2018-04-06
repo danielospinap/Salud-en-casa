@@ -7,7 +7,7 @@ exports.crearEmpleado = function (req, res) {
         if (err) {
             res.send(err);
         }
-        res.json(emple);
+        res.status(201).send('Empleado creado.');
     });
 }
 

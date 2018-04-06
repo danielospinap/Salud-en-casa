@@ -36,6 +36,16 @@ var EmpleadoSchema = new Schema({
         type: String,
         required: 'telefono es obligatorio.'
     },
+    rol: {
+        type:  [{
+            type: String,
+            enum: ['admin', 'medico', 'mensajero']
+        }],
+        required: 'rol es obligatorio.'
+    },
+    horarios: {
+        type: String
+    },
     usuario: {
         type: String,
         required: 'usuario es obligatorio.'
