@@ -1,5 +1,4 @@
 'use strict';
-
 var mongoose = require('mongoose'),
     User = mongoose.model('User');
 
@@ -30,9 +29,35 @@ exports.newUser = function(req, res) {
             res.send(error);
         }
             res.json(userJson);
-            //agregar aquí email automático
+            //agregar email
+            var nodemailer = require('nodemailer');
+            var transporter = nodemailer.createTransport({
+              service: 'gmail',
+              auth: {
+                user: 'noreplysaludencasaunnamed@gmail.com',
+                pass: 'ContraSalud'
+              }
+            });
+
+            var mailOptions = {
+              from: 'noreplysaludencasaunnamed@gmail.com',
+              to: req.body.correo,
+              subject: 'Sending Email using Node.js',
+              text: 'That was easy!' + req.body.password
+            };
+
+            transporter.sendMail(mailOptions, function(error, info){
+              if (error) {
+                console.log(error);
+              } else {
+                console.log('Email sent: ' + info.response);
+              }
+            });
+            //fin email
    });
 };
+
+
 
 
 exports.update = function(req, res) {
