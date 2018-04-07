@@ -1,0 +1,25 @@
+{
+  "name": "salud-en-casa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielospinap/Salud-en-casa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielospinap/Salud-en-casa/issues"
+  },
+  "homepage": "https://github.com/danielospinap/Salud-en-casa#readme",
+  "devDependencies": {
+    "electron": "^1.8.4"
+  },
+  "dependencies": {
+    "request": "^2.85.0"
+  }
+}
