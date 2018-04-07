@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    Cliente = mongoose.model('Cliente');
+    Cliente = mongoose.model('Client');
     var nodemailer = require('nodemailer');
     var transporter = nodemailer.createTransport({
       service: 'gmail',

@@ -54,4 +54,4 @@ var ClienteSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('Cliente', ClienteSchema);
+module.exports = mongoose.model('Client', ClienteSchema);
