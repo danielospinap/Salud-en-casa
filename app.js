@@ -3,6 +3,7 @@ var express = require('express'),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
     Empleado = require('./api/models/empleado'),
+    Cliente = require('./api/models/cliente')
     bodyParser = require('body-parser');
 
     //TODO:Comentar cuando se suba
