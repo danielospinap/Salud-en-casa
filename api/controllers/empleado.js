@@ -2,14 +2,31 @@ var mongoose = require('mongoose'),
     Empleado = mongoose.model('Empleado');
 
 exports.crearEmpleado = function (req, res) {
-    var nuevoEmpleado = new Empleado(req.body);
-    nuevoEmpleado.save(function (err, emple) {
-        if (err) {
-            res.send(err);
+    Empleado.find({usuario: req.body.usuario}, function (err, emple) {
+        if (emple.length === 0) {
+            var nuevoEmpleado = new Empleado(req.body);
+            nuevoEmpleado.save(function (err, emple) {
+                if (err) {
+                    res.send(err);
+                }
+                res.status(201).send('Empleado creado.');
+            });
+        }else {
+            res.send('El usuario ya existe');
         }
-        res.status(201).send('Empleado creado.');
     });
 }
+
+exports.loginEmpleado = function(req, res) {
+  Empleado.find({usuario: req.body.usuario, password: req.body.password}, function(err, emple) {
+    if (err)
+      res.send(err);
+    if (emple.length > 0) {
+        res.status(200).send('ok')
+    }
+    res.status(422).send('datos erroneos');
+  });
+};
 
 /*
 

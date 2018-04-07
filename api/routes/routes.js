@@ -3,6 +3,8 @@ module.exports = function(app) {
 
     // todoList Routes
     app.route('/empleado/register').post(empleadoCtrl.crearEmpleado);
+
+    app.route('/empleado/login').post(empleadoCtrl.loginEmpleado);
 /*
 
     app.route('/tasks/:taskId')
