@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var EmpleadoSchema = new Schema({
+var ClienteSchema = new Schema({
     /*tipo_documento: {
         type: [{
             type: String,
-            enum: ['CC', 'TI', 'CE'] //Cédula de ciudadanía, Tarjeta de identidad, Cédula de extranjería
+            enum: ['CC', 'TI', 'CE', ] //Cédula de ciudadanía, Tarjeta de identidad, Cédula de extranjería
         }],
         //required: 'tipo_documento es obligatorio.'
     },*/
@@ -15,11 +15,11 @@ var EmpleadoSchema = new Schema({
     },
     nombre: {
         type: String,
-        required: 'nombre es obligatorio.'
+        //required: 'nombre es obligatorio.'
     },
     edad: {
         type: String,
-        required: 'edad es obligatorio.'
+        //required: 'edad es obligatorio.'
     },
     /*fecha_nacimiento: {
         type: Date,
@@ -40,19 +40,9 @@ var EmpleadoSchema = new Schema({
         type: String,
         //required: 'telefono es obligatorio.'
     },
-    rol: {
-        type:  [{
-            type: String,
-            enum: ['admin', 'medico', 'mensajero']
-        }],
-        required: 'rol es obligatorio.'
-    },
-    horarios: {
-        type: String
-    },
-    usuario: {
+    correo: {
         type: String,
-        //required: 'usuario es obligatorio.'
+        required: 'usuario es obligatorio.'
     },
     password: {
         type: String,
@@ -64,4 +54,4 @@ var EmpleadoSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('Empleado', EmpleadoSchema);
+module.exports = mongoose.model('Cliente', ClienteSchema);

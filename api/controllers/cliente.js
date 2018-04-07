@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    Empleado = mongoose.model('Empleado');
+    Cliente = mongoose.model('Cliente');
     var nodemailer = require('nodemailer');
     var transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -9,8 +9,8 @@ var mongoose = require('mongoose'),
       }
     });
 
-exports.crearEmpleado = function (req, res) {
-    Empleado.find({usuario: req.body.usuario}, function (err, emple) {
+exports.crearCliente = function (req, res) {
+    Cliente.find({usuario: req.body.usuario}, function (err, emple) {
         if (emple.length === 0) {
             var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
             var stringLength = 8;
@@ -20,8 +20,8 @@ exports.crearEmpleado = function (req, res) {
                 randomString += chars.substring(rNum,rNum+1);
             }
             req.body.password = randomString;
-            var nuevoEmpleado = new Empleado(req.body);
-            nuevoEmpleado.save(function (err, emple) {
+            var nuevoCliente = new Cliente(req.body);
+            nuevoCliente.save(function (err, cli) {
                 if (err) {
                     res.send(err);
                 }
@@ -48,8 +48,8 @@ exports.crearEmpleado = function (req, res) {
     });
 }
 
-exports.loginEmpleado = function(req, res) {
-  Empleado.find({usuario: req.body.usuario, password: req.body.password}, function(err, emple) {
+exports.loginCliente = function(req, res) {
+  Empleado.find({usuario: req.body.usuario, password: req.body.password}, function(err, cli) {
     if (err)
       res.send(err);
     if (emple.length > 0) {
@@ -60,87 +60,33 @@ exports.loginEmpleado = function(req, res) {
 };
 
 
-exports.findEmpleado = function(req, res){
-    Empleado.find({usuario: req.body.usuario}, function(err, emple){
+exports.findCliente = function(req, res){
+    Empleado.find({usuario: req.body.usuario}, function(err, cli){
         if(err){
             res.send(err);
         }
         if(emple.length >0){
-            res.status(200).json(emple);
+            res.status(200).json(cli);
         }
     });
 };
 
-exports.todosLosEmpleados = function(res, req){
-        Empleado.find({},function(err, emple){
+exports.todosLosClientes = function(res, req){
+        Empleado.find({},function(err, cli){
             if(err){
                 res.send(err);
             }
             if(emple.length>0){
-                res.status(200).json(emple);
+                res.status(200).json(cli);
             }
         });
 };
 
-exports.updateEmpleado = function(res, req){
-    Empleado.findOneAndUpdate({usuario: req.body.usuario},function(err, emple){
+exports.updateCliente = function(res, req){
+    Empleado.findOneAndUpdate({usuario: req.body.usuario},function(err, cli){
         if (err) {
             res.send(err);
         }
-        res.status(200).send('Empleado actualizado');
+        res.status(200).send('Cliente actualizado');
     });
 };
-
-/*
-
-exports.list_all_tasks = function(req, res) {
-  Task.find({}, function(err, task) {
-    if (err)
-      res.send(err);
-    res.json(task);
-  });
-};
-
-
-
-
-exports.create_a_task = function(req, res) {
-  var new_task = new Task(req.body);
-  new_task.save(function(err, task) {
-    if (err)
-      res.send(err);
-    res.json(task);
-  });
-};
-
-
-exports.read_a_task = function(req, res) {
-  Task.findById(req.params.taskId, function(err, task) {
-    if (err)
-      res.send(err);
-    res.json(task);
-  });
-};
-
-
-exports.update_a_task = function(req, res) {
-  Task.findOneAndUpdate({_id: req.params.taskId}, req.body, {new: true}, function(err, task) {
-    if (err)
-      res.send(err);
-    res.json(task);
-  });
-};
-
-
-exports.delete_a_task = function(req, res) {
-
-
-  Task.remove({
-    _id: req.params.taskId
-  }, function(err, task) {
-    if (err)
-      res.send(err);
-    res.json({ message: 'Task successfully deleted' });
-  });
-};
-*/

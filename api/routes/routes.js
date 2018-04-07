@@ -1,16 +1,18 @@
 module.exports = function(app) {
     var empleadoCtrl = require('../controllers/empleado.js');
+    var clienteCtrl = require('../controllers/cliente.js');
 
-    // todoList Routes
     app.route('/empleado/register').post(empleadoCtrl.crearEmpleado);
-
     app.route('/empleado/login').post(empleadoCtrl.loginEmpleado);
-
     app.route('/empleado/update').put(empleadoCtrl.updateEmpleado);
-
-    app.route('/empleado/all').post(empleadoCtrl.findTodosLosEmpleados);
-
+    app.route('/empleado/all').post(empleadoCtrl.todosLosEmpleados);
     app.route('/empleado/find').post(empleadoCtrl.findEmpleado);
+
+    app.route('/client/register').post(clienteCtrl.crearCliente);
+    app.route('/client/login').post(clienteCtrl.loginCliente);
+    app.route('/client/update').put(clienteCtrl.updateCliente);
+    app.route('/client/all').post(clienteCtrl.todosLosClientes);
+    app.route('/client/find').post(clienteCtrl.findCliente);
 
 /*
 
