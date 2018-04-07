@@ -49,7 +49,7 @@ exports.crearCliente = function (req, res) {
 }
 
 exports.loginCliente = function(req, res) {
-  Empleado.find({usuario: req.body.usuario, password: req.body.password}, function(err, cli) {
+  Cliente.find({usuario: req.body.usuario, password: req.body.password}, function(err, cli) {
     if (err)
       res.send(err);
     if (emple.length > 0) {
@@ -61,7 +61,7 @@ exports.loginCliente = function(req, res) {
 
 
 exports.findCliente = function(req, res){
-    Empleado.find({usuario: req.body.usuario}, function(err, cli){
+    Cliente.find({usuario: req.body.usuario}, function(err, cli){
         if(err){
             res.send(err);
         }
@@ -72,7 +72,7 @@ exports.findCliente = function(req, res){
 };
 
 exports.todosLosClientes = function(res, req){
-        Empleado.find({},function(err, cli){
+        Cliente.find({},function(err, cli){
             if(err){
                 res.send(err);
             }
@@ -83,7 +83,7 @@ exports.todosLosClientes = function(res, req){
 };
 
 exports.updateCliente = function(res, req){
-    Empleado.findOneAndUpdate({usuario: req.body.usuario},function(err, cli){
+    Cliente.findOneAndUpdate({usuario: req.body.usuario},function(err, cli){
         if (err) {
             res.send(err);
         }
