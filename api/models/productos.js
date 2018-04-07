@@ -11,6 +11,14 @@ var ProductoSchema = new Schema({
         type: String,
         required: 'descripcion es obligatoria'
     },
+    caracteristica: {
+        type: String,
+        required: 'caracteristica es obligatoria'
+    },
+    volumen: {
+        type: String,
+        required: 'volumen es obligatoria'
+    },
     unidades: {
         type: Number,
         required: 'El numero de unidades es obligatorio'
