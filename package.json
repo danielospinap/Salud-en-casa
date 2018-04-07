@@ -19,7 +19,8 @@
   "homepage": "https://github.com/danielospinap/Salud-en-casa#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "mongoose": "^5.0.10"
+    "mongoose": "^5.0.10",
+    "nodemailer": "^4.6.4"
   },
   "devDependencies": {
     "dotenv": "^5.0.1",
