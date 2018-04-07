@@ -5,6 +5,13 @@ module.exports = function(app) {
     app.route('/empleado/register').post(empleadoCtrl.crearEmpleado);
 
     app.route('/empleado/login').post(empleadoCtrl.loginEmpleado);
+
+    app.route('/empleado/update').put(empleadoCtrl.updateEmpleado);
+
+    app.route('/empleado/all').post(empleadoCtrl.findTodosLosEmpleados);
+
+    app.route('/empleado/find').post(empleadoCtrl.findEmpleado);
+
 /*
 
     app.route('/tasks/:taskId')

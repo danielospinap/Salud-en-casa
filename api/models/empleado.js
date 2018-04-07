@@ -7,34 +7,38 @@ var EmpleadoSchema = new Schema({
             type: String,
             enum: ['CC', 'TI', 'CE'] //Cédula de ciudadanía, Tarjeta de identidad, Cédula de extranjería
         }],
-        required: 'tipo_documento es obligatorio.'
+        //required: 'tipo_documento es obligatorio.'
     },
     numero_documento: {
         type: String,
-        required: 'numero_documento es obligatorio.'
+        //required: 'numero_documento es obligatorio.'
     },
     nombre: {
         type: String,
         required: 'nombre es obligatorio.'
     },
-    fecha_nacimiento: {
+    edad: {
+        type: String,
+        required: 'edad es obligatorio.'
+    },
+    /*fecha_nacimiento: {
         type: Date,
         required: 'fecha_nacimiento es obligatorio.'
-    },
+    },*/
     sexo: {
         type: [{
             type: String,
             enum: ['M', 'F'] //Masculino, Femenino
         }],
-        required: 'sexo es obligatorio.'
+        //required: 'sexo es obligatorio.'
     },
     direccion: {
         type: String,
-        required: 'direccion es obligatorio.'
+        //required: 'direccion es obligatorio.'
     },
     telefono: {
         type: String,
-        required: 'telefono es obligatorio.'
+        //required: 'telefono es obligatorio.'
     },
     rol: {
         type:  [{
@@ -53,6 +57,10 @@ var EmpleadoSchema = new Schema({
     password: {
         type: String,
         required: 'password es obligatorio.'
+    },
+    passwordInicial: {
+        type: Boolean,
+        default: true
     }
 });
 
