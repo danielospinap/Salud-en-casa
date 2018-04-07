@@ -4,12 +4,19 @@ var mongoose = require('mongoose'),
 
 
 exports.validate = function(req, res) {
-    console.log(req.body.correo);
-    User.findById(req.body.correo, function(err, task) {
-    if (err)
-      res.send(err);
-    res.json(task);
-  });
+
+    User.findOne({"usuario":req.body.usuario},function(err, userJson) {
+        if (err) {
+            res.send(err);
+        }else{
+            if(req.body.password === userJson.password){
+                res.sendStatus(200);
+            }else{
+                res.sendStatus(400);
+            }
+        }
+    });
+
 };
 
 
@@ -42,8 +49,8 @@ exports.newUser = function(req, res) {
             var mailOptions = {
               from: 'noreplysaludencasaunnamed@gmail.com',
               to: req.body.correo,
-              subject: 'Sending Email using Node.js',
-              text: 'That was easy!' + req.body.password
+              subject: 'User Password',
+              text: 'Your password is: ' + req.body.password
             };
 
             transporter.sendMail(mailOptions, function(error, info){

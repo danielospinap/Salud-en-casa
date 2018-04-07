@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
 
     nombres: {
-        type: String,
+        type: String
     },
     apellidos: {
-        type: String,
+        type: String
     },
     genero: {
         type: [{
@@ -16,8 +16,7 @@ var UserSchema = new Schema({
         }],
     },
     edad: {
-        type: String,
-
+        type: String
     },
     correo: {
         type: String,
@@ -25,8 +24,11 @@ var UserSchema = new Schema({
         unique:true,
     },
     password: {
-        type: String,
-
+        type: String
+    },
+    passA: {
+        type: Boolean,
+        default: true
     }
 });
 
