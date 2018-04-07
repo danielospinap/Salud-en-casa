@@ -18,7 +18,7 @@ var ProductoSchema = new Schema({
     imagen: {
         type: String
     },
-    mobile{
+    mobile: {
         type: Boolean,
         default: false
     }
