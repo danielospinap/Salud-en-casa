@@ -4,6 +4,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     Empleado = require('./api/models/empleado'),
     Cliente = require('./api/models/cliente'),
+    Producto = require('./api/models/productos')
     bodyParser = require('body-parser');
 
     //TODO:Comentar cuando se suba

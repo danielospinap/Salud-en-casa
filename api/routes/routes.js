@@ -17,10 +17,10 @@ module.exports = function(app) {
     app.route('/client/all').post(clienteCtrl.todosLosClientes);
     app.route('/client/find').post(clienteCtrl.findCliente);
 
-    app.route('/product/create').post(clienteCtrl.crearProducto);
-    app.route('/product/update').put(clienteCtrl.updateProducto);
-    app.route('/product/all').post(clienteCtrl.todosLosProductos);
-    app.route('/product/find').post(clienteCtrl.findProducto);
+    app.route('/product/create').post(productoCtrl.crearProducto);
+    app.route('/product/update').put(productoCtrl.updateProducto);
+    app.route('/product/all').post(productoCtrl.todosLosProductos);
+    app.route('/product/find').post(productoCtrl.findProducto);
 /*
 
     app.route('/tasks/:taskId')
