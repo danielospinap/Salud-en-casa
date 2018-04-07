@@ -82,6 +82,29 @@ exports.todosLosEmpleados = function(res, req){
         });
 };
 
+exports.todosLosMensajeros = function(res, req){
+        Empleado.find({rol:'mensajero'},function(err, emple){
+            if(err){
+                res.send(err);
+            }
+            if(emple.length>0){
+                res.status(200).json(emple);
+            }
+        });
+};
+
+exports.todosLosAdmins = function(res, req){
+        Empleado.find({rol:'admin'},function(err, emple){
+            if(err){
+                res.send(err);
+            }
+            if(emple.length>0){
+                res.status(200).json(emple);
+            }
+        });
+};
+
+
 exports.updateEmpleado = function(res, req){
     Empleado.findOneAndUpdate({usuario: req.body.usuario},function(err, emple){
         if (err) {
@@ -90,6 +113,8 @@ exports.updateEmpleado = function(res, req){
         res.status(200).send('Empleado actualizado');
     });
 };
+
+
 
 /*
 

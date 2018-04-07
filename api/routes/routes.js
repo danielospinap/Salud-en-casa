@@ -7,6 +7,8 @@ module.exports = function(app) {
     app.route('/empleado/update').put(empleadoCtrl.updateEmpleado);
     app.route('/empleado/all').post(empleadoCtrl.todosLosEmpleados);
     app.route('/empleado/find').post(empleadoCtrl.findEmpleado);
+    app.route('/empleado/allDeliverys').post(empleadoCtrl.todosLosMensajeros);
+    app.route('/empleado/allAdmins').post(empleadoCtrl.todosLosAdmins);
 
     app.route('/client/register').post(clienteCtrl.crearCliente);
     app.route('/client/login').post(clienteCtrl.loginCliente);
