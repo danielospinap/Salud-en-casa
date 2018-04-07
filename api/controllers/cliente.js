@@ -43,7 +43,7 @@ exports.crearCliente = function (req, res) {
                 res.status(201).send('Empleado creado.');
             });
         }else {
-            res.send('El usuario ya existe');
+            res.send('El correo ya esta en uso');
         }
     });
 }

@@ -1,6 +1,7 @@
 module.exports = function(app) {
     var empleadoCtrl = require('../controllers/empleado.js');
     var clienteCtrl = require('../controllers/cliente.js');
+    var productoCtrl = require('../controllers/productos.js');
 
     app.route('/empleado/register').post(empleadoCtrl.crearEmpleado);
     app.route('/empleado/login').post(empleadoCtrl.loginEmpleado);
@@ -16,6 +17,10 @@ module.exports = function(app) {
     app.route('/client/all').post(clienteCtrl.todosLosClientes);
     app.route('/client/find').post(clienteCtrl.findCliente);
 
+    app.route('/product/create').post(clienteCtrl.crearProducto);
+    app.route('/product/update').put(clienteCtrl.updateProducto);
+    app.route('/product/all').post(clienteCtrl.todosLosProductos);
+    app.route('/product/find').post(clienteCtrl.findProducto);
 /*
 
     app.route('/tasks/:taskId')
