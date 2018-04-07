@@ -13,8 +13,8 @@ var express = require('express'),
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DB_URL);
-
+//mongoose.connect(process.env.DB_URL);
+mongoose.connect('mongodb://localhost/prueba5')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
