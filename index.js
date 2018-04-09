@@ -2,7 +2,8 @@ var express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
-    Producto = require('./models/producto')
+    Producto = require('./models/producto'),
+    Log = require('./models/log'),
     bodyParser = require('body-parser');
 
     //TODO:Comentar cuando se suba

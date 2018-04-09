@@ -1,12 +1,15 @@
 var mongoose = require('mongoose'),
     Producto = mongoose.model('Producto');
 
+var logController = require('./log.js');
+
 exports.crearProducto = function (req, res) {
     var nuevoProducto = new Producto(req.body);
     nuevoProducto.save(function (err, prod) {
         if (err) {
             res.send(err);
         }
+        logController.generateLog(req.body.autor, 'create', prod);
         res.json(prod);
     });
 }
