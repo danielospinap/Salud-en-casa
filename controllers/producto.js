@@ -40,6 +40,21 @@ exports.listProducts = function(req, res) {
     }
 };
 
+exports.updateProduct = function(req, res) {
+    Producto.findById(req.body.id, function(err, prod) {
+        if (err)
+            res.send(err);
+        prodAnterior = new Producto(prod);
+        prod.set(req.body);
+        prod.save(function (err2, newProd) {
+            if(err2)
+                res.send(err2)
+            logController.generateLog(req.body.autor, 'update', prodAnterior, newProd);
+            res.status(200).send('ok');
+        });
+    });
+};
+
 
 
 /*
