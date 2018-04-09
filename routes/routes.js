@@ -4,6 +4,7 @@ module.exports = function(app) {
     app.route('/producto/create').post(productoCtrl.crearProducto);
     app.route('/producto/list').get(productoCtrl.listProducts);
     app.route('/producto/update').put(productoCtrl.updateProduct);
+    app.route('/producto/delete').delete(productoCtrl.deleteProduct);
 
 /*
     app.route('/tasks/:taskId')

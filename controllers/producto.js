@@ -14,6 +14,16 @@ exports.crearProducto = function (req, res) {
     });
 }
 
+exports.listProducts = function(req, res) {
+    if (req.query.origen === 'web') {
+        listWebProducts(req,res)
+    } else if (req.query.origen === 'mobile') {
+        listMobileProducts(req,res)
+    } else {
+        res.status(404).send('Falta origen.')
+    }
+};
+
 function listMobileProducts(req, res) {
   Producto.find({}, function(err, prod) {
     if (err)
@@ -30,16 +40,6 @@ function listWebProducts(req, res) {
   });
 };
 
-exports.listProducts = function(req, res) {
-    if (req.query.origen === 'web') {
-        listWebProducts(req,res)
-    } else if (req.query.origen === 'mobile') {
-        listMobileProducts(req,res)
-    } else {
-        res.status(404).send('Falta origen.')
-    }
-};
-
 exports.updateProduct = function(req, res) {
     Producto.findById(req.body.id, function(err, prod) {
         if (err)
@@ -53,6 +53,15 @@ exports.updateProduct = function(req, res) {
             res.status(200).send('ok');
         });
     });
+};
+
+exports.deleteProduct = function(req, res) {
+    Producto.findByIdAndRemove({_id: req.body.id}, function(err, prod) {
+        if (err)
+            res.send(err);
+        logController.generateLog(req.body.autor, 'delete', prod);
+        res.json('Producto eliminado');
+  });
 };
 
 
