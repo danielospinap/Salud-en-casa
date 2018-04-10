@@ -40,7 +40,7 @@ var ClienteSchema = new Schema({
         type: String,
         //required: 'telefono es obligatorio.'
     },
-    correo: {
+    usuario: {
         type: String,
         required: 'usuario es obligatorio.'
     },
