@@ -1,0 +1,4 @@
+#Sat Apr 07 04:38:06 COT 2018
+base.0=C\:\\Users\\andre\\Documents\\Android\\AppFarmacia\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\6
+path.0=classes.dex
+renamed.0=classes.dex
