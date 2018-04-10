@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
 
 exports.crearCliente = function (req, res) {
     Cliente.find({usuario: req.body.usuario}, function (err, cli) {
-        if (cli.length === 0) {
+        if (cli.length == 0) {
             var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
             var stringLength = 8;
             var randomString = '';
