@@ -85,3 +85,18 @@ ipcMain.on('login-submission', function (event, user, pass) {
     );
 
 });
+
+
+ipcMain.on('obtener-productos', function (event, divProductos) {
+    request.get(
+        'https://solicitud-medicamentos-unnamed.herokuapp.com/producto/list?origen=mobile',
+        function (err, response, body) {
+            if (err) {
+                console.log(err);
+                event.sender.send('error-server');
+            }
+            var json = JSON.parse(body);
+            event.sender.send('listar-productos', json);
+        }
+    );
+});
