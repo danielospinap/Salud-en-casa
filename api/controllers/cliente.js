@@ -10,8 +10,8 @@ var mongoose = require('mongoose'),
     });
 
 exports.crearCliente = function (req, res) {
-    Cliente.find({usuario: req.body.usuario}, function (err, emple) {
-        if (emple.length === 0) {
+    Cliente.find({usuario: req.body.usuario}, function (err, cli) {
+        if (cli.length === 0) {
             var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
             var stringLength = 8;
             var randomString = '';
@@ -40,7 +40,7 @@ exports.crearCliente = function (req, res) {
                   }
                 });
 
-                res.status(201).send('Empleado creado.');
+                res.status(201).send('Cliente creado.');
             });
         }else {
             res.send('El correo ya esta en uso');
@@ -49,10 +49,10 @@ exports.crearCliente = function (req, res) {
 }
 
 exports.loginCliente = function(req, res) {
-  Empleado.find({usuario: req.body.usuario, password: req.body.password}, function(err, cli) {
+  Cliente.find({usuario: req.body.usuario, password: req.body.password}, function(err, cli) {
     if (err)
       res.send(err);
-    if (emple.length > 0) {
+    if (cli.length > 0) {
         res.status(200).send('ok')
     }
     res.status(422).send('datos erroneos');
@@ -61,29 +61,29 @@ exports.loginCliente = function(req, res) {
 
 
 exports.findCliente = function(req, res){
-    Empleado.find({usuario: req.body.usuario}, function(err, cli){
+    Cliente.find({usuario: req.body.usuario}, function(err, cli){
         if(err){
             res.send(err);
         }
-        if(emple.length >0){
+        if(cli.length >0){
             res.status(200).json(cli);
         }
     });
 };
 
 exports.todosLosClientes = function(res, req){
-        Empleado.find({},function(err, cli){
+        Cliente.find({},function(err, cli){
             if(err){
                 res.send(err);
             }
-            if(emple.length>0){
+            if(cli.length>0){
                 res.status(200).json(cli);
             }
         });
 };
 
 exports.updateCliente = function(res, req){
-    Empleado.findOneAndUpdate({usuario: req.body.usuario},function(err, cli){
+    Cliente.findOneAndUpdate({usuario: req.body.usuario},function(err, cli){
         if (err) {
             res.send(err);
         }
