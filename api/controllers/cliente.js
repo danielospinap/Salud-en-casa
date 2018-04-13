@@ -137,7 +137,7 @@ exports.crearCliente = function (req, res) {
 }
 */
 exports.loginCliente = function(req, res) {
-  Cliente.find({usuario: req.body.usuario, password: req.body.password}, function(err, cli) {
+  Cliente.find({usuario: req.body.usuario, clave: req.body.password}, function(err, cli) {
     if (err)
       res.send(err);
     if (cli.length > 0) {
