@@ -11,7 +11,7 @@ module.exports = function(app) {
     app.route('/empleado/allDeliverys').post(empleadoCtrl.todosLosMensajeros);
     app.route('/empleado/allAdmins').post(empleadoCtrl.todosLosAdmins);
 
-    app.route('/client/register').post(clienteCtrl.crearCliente);
+    app.route('/client/register').post(clienteCtrl.createCliente);
     app.route('/client/login').post(clienteCtrl.loginCliente);
     app.route('/client/update').put(clienteCtrl.updateCliente);
     app.route('/client/all').post(clienteCtrl.todosLosClientes);
