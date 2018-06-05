@@ -100,3 +100,26 @@ ipcMain.on('obtener-productos', function (event, divProductos) {
         }
     );
 });
+
+ipcMain.on('obtener-pedidos', function (event) {
+    request.get(
+        'https://tracking-unnamed.herokuapp.com/pedido/',
+        function (err, response, body) {
+            if (err) {
+                console.log(err);
+                event.sender.send('error-server');
+            }
+            var json = JSON.parse(body);
+            event.sender.send('listar-pedidos', json);
+        }
+    );
+})
+
+ipcMain.on('mostrar-mapa', function (event, id) {
+    let child = new BrowserWindow({parent: top, modal: true, show: false})
+    child.loadURL('https://github.com')
+    child.once('ready-to-show', () => {
+        child.show();
+    })
+
+})

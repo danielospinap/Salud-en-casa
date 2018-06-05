@@ -99,3 +99,74 @@ ipcRenderer.on('error-datos', function(event){
 
     responseParagraph.innerHTML = "Datos incorrectos."
 });
+
+
+
+function obtenerPedidos() {
+    ipcRenderer.send('obtener-pedidos');
+}
+
+
+ipcRenderer.on('listar-pedidos', function(event, pedidos){
+
+    var divPedidos = document.getElementById("pedidos");
+    divPedidos.innerHTML=("");
+    for (var i = 0; i < pedidos.length; i++) {
+        var divCard = document.createElement("div");
+        divCard.classList.add("card");
+        divCard.classList.add("my-1");
+        divCard.setAttribute("onclick","console.log('holi');mostrarMapa(" + pedidos[i]._id + ");");
+        divPedidos.appendChild(divCard);
+
+        var divCardBody = document.createElement("div");
+        divCardBody.classList.add("card-body");
+        divCardBody.classList.add("pb-1");
+        divCard.appendChild(divCardBody);
+
+        var nombre = document.createElement("h5");
+        nombre.classList.add("mt-0");
+        numPedido = i+1;
+        nombre.innerHTML = 'Pedido #' + numPedido;
+        divCardBody.appendChild(nombre);
+    }
+});
+
+
+//TODO: mover
+function initMap() {
+    
+    var divPedidos = document.getElementById("pedidos");
+    divPedidos.innerHTML=("");
+
+    divMap = document.createElement("div");
+    divMap.classList.add("map");
+    divPedidos.appendChild(divMap);
+
+    var map;
+    var map = new google.maps.Map(divMap, {
+        zoom: 3,
+        center: {lat: 0, lng: -180},
+        mapTypeId: 'terrain'
+    });
+
+    var flightPlanCoordinates = [
+        {lat: 37.772, lng: -122.214},
+        {lat: 21.291, lng: -157.821},
+        {lat: -18.142, lng: 178.431},
+        {lat: -27.467, lng: 153.027}
+    ];
+    var flightPath = new google.maps.Polyline({
+        path: flightPlanCoordinates,
+        geodesic: true,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+    });
+
+    flightPath.setMap(map);
+    
+}
+
+function mostrarMapa(id) {
+    ipcRenderer.send('mostrar-mapa', id);
+}
