@@ -1,0 +1,26 @@
+{
+  "name": "tracking_service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielospinap/Salud-en-casa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielospinap/Salud-en-casa/issues"
+  },
+  "homepage": "https://github.com/danielospinap/Salud-en-casa#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.1.4"
+  }
+}
