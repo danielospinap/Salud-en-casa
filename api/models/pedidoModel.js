@@ -3,21 +3,15 @@ var Schema = mongoose.Schema;
 
 
 var PedidoSchema = new Schema({
-    latitud: {
-        type: String,
-        required: 'Kindly enter the latitud of the pedido'
+    ruta: [{}],
+    status: {
+        type: [{
+            type: String,
+            enum: ['pending', 'ongoing', 'completed']
+        }],
+        default: ['pending']
     },
-    longitud: {
-        type: String,
-        required: 'Kindly enter the nalongitudme of the pedido'
-    },
-  status: {
-    type: [{
-      type: String,
-      enum: ['pending', 'ongoing', 'completed']
-    }],
-    default: ['pending']
-  }
+    destino: {}
 });
 
 module.exports = mongoose.model('Pedido', PedidoSchema);

@@ -29,10 +29,19 @@ exports.ver_pedido = function(req, res) {
 
 
 exports.actualizar_pedido = function(req, res) {
-    Pedido.findOneAndUpdate({_id: req.params.pedidoId}, req.body, {new: true}, function(err, pedido) {
-        if (err)
+    
+    Pedido.findById(req.params.pedidoId, function(err, pedido) {
+        if(err){
             res.send(err);
-        res.json(pedido);
+        }
+        pedido.ruta.push(req.body);
+        pedido.status = 'ongoing';
+        pedido.save(function (err, pedidoActualizado){
+            if(err){
+                res.send(err);
+            }
+            res.send(pedidoActualizado);
+        });
     });
 };
 
