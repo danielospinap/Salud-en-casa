@@ -116,7 +116,10 @@ ipcMain.on('obtener-pedidos', function (event) {
 })
 
 ipcMain.on('mostrar-mapa', function (event, id) {
-    let child = new BrowserWindow({parent: top, modal: true, show: false})
+    console.log(id);
+    console.log("prro");
+    
+    let child = new BrowserWindow({parent: mainWindow, modal: true, show: false});
     child.loadURL('https://github.com')
     child.once('ready-to-show', () => {
         child.show();

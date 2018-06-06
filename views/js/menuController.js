@@ -115,7 +115,8 @@ ipcRenderer.on('listar-pedidos', function(event, pedidos){
         var divCard = document.createElement("div");
         divCard.classList.add("card");
         divCard.classList.add("my-1");
-        divCard.setAttribute("onclick","console.log('holi');mostrarMapa(" + pedidos[i]._id + ");");
+        divCard.setAttribute("onclick","mostrarMapa(5);");
+        // divCard.setAttribute("onclick","mostrarMapa(" + pedidos[i]._id + ");");
         divPedidos.appendChild(divCard);
 
         var divCardBody = document.createElement("div");
