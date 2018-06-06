@@ -10,7 +10,8 @@ exports.listar_pedidos = function(req, res) {
 };
 
 exports.crear_pedido = function(req, res) {
-    var new_pedido = new Pedido(req.body);
+    var new_pedido = new Pedido();
+    new_pedido.destino = req.body;
     new_pedido.save(function(err, pedido) {
         if (err)
             res.send(err);
