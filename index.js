@@ -120,7 +120,11 @@ ipcMain.on('mostrar-mapa', function (event, id) {
     console.log("prro");
     
     let child = new BrowserWindow({parent: mainWindow, modal: true, show: false});
-    child.loadURL('https://github.com')
+    child.loadURL(url.format({
+        pathname: path.join(__dirname, '/views/map.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
     child.once('ready-to-show', () => {
         child.show();
     })
