@@ -141,7 +141,7 @@ exports.loginCliente = function(req, res) {
     if (err)
       res.send(err);
     if (cli.length > 0) {
-        res.status(200).send('ok')
+        res.status(200).send('Usuario logeado correctamente.')
     }
     res.status(422).send('datos erroneos');
   });
